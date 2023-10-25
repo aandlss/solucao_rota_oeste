@@ -13,7 +13,7 @@ class MenuButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onUltimosAlertasPressed,
-      child: this.activated
+      child: true
           ? _ButtonActivated(buttonTitle)
           : _ButtonDisabled(buttonTitle),
     );

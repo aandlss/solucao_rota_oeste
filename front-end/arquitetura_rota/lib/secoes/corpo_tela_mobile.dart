@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 
-class CorpoTela extends StatelessWidget {
+class CorpoTelaMobile extends StatelessWidget {
 
   final String titulo;
 
   final Widget filho;
 
-  const CorpoTela(this.titulo, {Key? key, required this.filho}) : super(key: key);
+  const CorpoTelaMobile(this.titulo, {Key? key, required this.filho}) : super(key: key);
 
   Widget build(BuildContext context) {
     return Expanded(
-      child: Padding(
-        padding: EdgeInsets.only(left: 37),
         child: Container(
           width: double.infinity,
           height: double.infinity,
@@ -40,7 +38,7 @@ class CorpoTela extends StatelessWidget {
             ],
           ),
         ),
-      ),
+
     );
   }
 }

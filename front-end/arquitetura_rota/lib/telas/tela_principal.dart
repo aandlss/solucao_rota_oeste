@@ -6,6 +6,8 @@ import 'package:arquitetura_rota/telas/tela_ultimos_alertas.dart';
 import 'package:flutter/material.dart';
 
 class TelaPrincipal extends StatefulWidget {
+  const TelaPrincipal({Key? key}) : super(key: key);
+
   @override
   _TelaPrincipalState createState() => _TelaPrincipalState();
 }
@@ -26,29 +28,36 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
   }
 
   @override
+  void initState(){
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(color: '#d9d9d9'.toColor()),
-      child: Padding(
-        padding: EdgeInsets.fromLTRB(36, 0, 36, 28),
-        child: Column(
-          children: [
-            Cabecalho(onLupaPressed: _navegarParaResultadoPesquisa),
-            Expanded(
-              child: IntrinsicHeight(
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Menu(
-                      tela: "ultimosalertas", 
-                      onUltimosAlertasPressed: _navegarParaUltimosAlertas,
-                    ),
-                    _corpoTela,
-                  ],
+    return Scaffold(
+      body: Container(
+        decoration: BoxDecoration(color: '#d9d9d9'.toColor()),
+        child: Padding(
+          padding: EdgeInsets.fromLTRB(36, 0, 36, 28),
+          child: Column(
+            children: [
+              Cabecalho(onLupaPressed: _navegarParaResultadoPesquisa),
+              Expanded(
+                child: IntrinsicHeight(
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Menu(
+                        tela: "ultimosalertas",
+                        onUltimosAlertasPressed: _navegarParaUltimosAlertas,
+                      ),
+                      _corpoTela,
+                    ],
+                  ),
                 ),
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );

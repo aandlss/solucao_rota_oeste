@@ -22,7 +22,7 @@ class CabecalhoAlerta extends StatelessWidget {
               Expanded(
                 child: SizedBox(
                   width: 100,
-                  child: _ItemAlerta(titulo: "Modelo"),
+                  child: _ItemAlerta(titulo: "ID Alerta"),
                 ),
               ),
               Expanded(

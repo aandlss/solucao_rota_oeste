@@ -1,5 +1,6 @@
 import 'package:arquitetura_rota/extensoes.dart';
 import 'package:arquitetura_rota/services/autenticacao.dart';
+import 'package:arquitetura_rota/telas/tela_principal.dart';
 import 'package:flutter/material.dart';
 import 'package:universal_platform/universal_platform.dart';
 
@@ -18,24 +19,23 @@ class TelaLoginState extends State<TelaLogin> {
 
   Future<void> loginAndNavigate(BuildContext context) async {
     try {
-      // Pegue os valores dos campos de "Email" e "Senha" e passe ao serviço
-      String username = _usernameController.text; // Usando o campo de "Email"
-      String password = _passwordController.text; // Usando o campo de "Senha"
+      // ignore: unused_local_variable
+      String token = await _authService.login(
+        _usernameController.text,
+        _passwordController.text,
+      );
 
-      String token = await _authService.login(username, password);
-
-      if (UniversalPlatform.isWeb) {
-        // Navegar no modo web usando pushReplacement e Uri.base
-        final newUri = Uri.parse(Uri.base.toString() + 'home');
-        Navigator.pushReplacementNamed(context, newUri.toString());
+      final double shortestSide = MediaQuery.of(context).size.shortestSide;
+      if (shortestSide < 600) {
+        //Navigator.pushReplacementNamed(context, '/mobilehome');
       } else {
-        // Navegar no modo aplicativo/desktop
-        Navigator.pushReplacementNamed(context, '/home');
+        Navigator.pushReplacementNamed(context, '/home').then((_) => setState(() {}));
       }
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Falha no login')),
+        const SnackBar(content: Text('Failed to login')),
       );
+      print(e);
     }
   }
 

@@ -30,7 +30,7 @@ class AuthService {
         await prefs.setString('token', jwtToken);
         return jwtToken;
       } else {
-        throw Exception('Failed to login');
+        throw Exception('Erro no login');
       }
     } catch (e) {
       rethrow;
